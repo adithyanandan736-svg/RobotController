@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/header_gradient"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/logo_robot"
+                android:layout_marginEnd="12dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adithya 2.0"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Move. Talk. Explore."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- CONNECTION -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Connection"
+                android:textColor="@color/text_secondary"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <RadioGroup
+                android:id="@+id/radioConnType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <RadioButton
+                    android:id="@+id/radioWifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WiFi"
+                    android:textColor="@color/text_primary"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/radioBluetooth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bluetooth"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginStart="16dp" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/editIp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Robot IP e.g. 192.168.1.42:5000"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/btnConnect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Connect"
+                android:backgroundTint="@color/accent"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status: not connected"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/txtBattery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Battery: —"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- MOVEMENT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Movement"
+                android:textColor="@color/text_secondary"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <com.robot.controller.JoystickView
+                android:id="@+id/joystick"
+                android:layout_width="220dp"
+                android:layout_height="220dp" />
+        </LinearLayout>
+
+        <!-- ARMS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arms"
+                android:textColor="@color/text_secondary"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Left Arm"
+                        android:textColor="@color/text_primary" />
+
+                    <Button
+                        android:id="@+id/btnLeftArmUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Raise"
+                        android:backgroundTint="@color/accent_dim" />
+
+                    <Button
+                        android:id="@+id/btnLeftArmDown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lower"
+                        android:backgroundTint="@color/accent_dim"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Right Arm"
+                        android:textColor="@color/text_primary" />
+
+                    <Button
+                        android:id="@+id/btnRightArmUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Raise"
+                        android:backgroundTint="@color/accent_dim" />
+
+                    <Button
+                        android:id="@+id/btnRightArmDown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lower"
+                        android:backgroundTint="@color/accent_dim"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- HEAD -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Head"
+                android:textColor="@color/text_secondary"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnHeadLeft"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Left"
+                    android:backgroundTint="@color/accent_dim"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/btnHeadCenter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Center"
+                    android:backgroundTint="@color/accent_dim"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/btnHeadRight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Right"
+                    android:backgroundTint="@color/accent_dim" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnBlink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Blink"
+                android:backgroundTint="@color/accent_dim"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- MODES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mode"
+                android:textColor="@color/text_secondary"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnModeManual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Manual"
+                android:backgroundTint="@color/accent" />
+
+            <Button
+                android:id="@+id/btnModeObstacle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Obstacle Avoidance"
+                android:backgroundTint="@color/accent_dim"
+                android:layout_marginTop="6dp" />
+
+            <Button
+                android:id="@+id/btnModeFollow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Human Following"
+                android:backgroundTint="@color/accent_dim"
+                android:layout_marginTop="6dp" />
+
+            <Button
+                android:id="@+id/btnModeLane"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lane Following"
+                android:backgroundTint="@color/accent_dim"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/txtModeNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note: Obstacle avoidance, human following, and lane following require the corresponding sensors/camera and matching logic running on the Pi. This button only tells the Pi which mode to switch to."
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+        <!-- AI CHAT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Talk to Robot (AI Chat)"
+                android:textColor="@color/text_secondary"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <ScrollView
+                android:id="@+id/scrollChat"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:background="@color/bg_dark">
+
+                <LinearLayout
+                    android:id="@+id/chatContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp" />
+            </ScrollView>
+
+            <TextView
+                android:id="@+id/txtTypingIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Assistant is typing..."
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <EditText
+                    android:id="@+id/editChatInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Type a message..."
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary" />
+
+                <Button
+                    android:id="@+id/btnChatSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Send"
+                    android:backgroundTint="@color/accent"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/chkSpeakReplies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Speak replies aloud (male voice)"
+                android:textColor="@color/text_secondary"
+                android:checked="true"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- ABOUT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About This Robot"
+                android:textColor="@color/text_secondary"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Built and coded by Adithya Nandan, a 10th-grade student passionate about robotics. This robot moves, talks, and responds using a Raspberry Pi, Arduino Mega, and ESP32 working together."
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                android:lineSpacingExtra="3dp"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgPart1"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/card_bg"
+                    android:contentDescription="Robot build photo 1" />
+
+                <ImageView
+                    android:id="@+id/imgPart2"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/card_bg"
+                    android:contentDescription="Robot build photo 2" />
+
+                <ImageView
+                    android:id="@+id/imgPart3"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/card_bg"
+                    android:contentDescription="Robot build photo 3" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(Add your own build photos — see README for how)"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
